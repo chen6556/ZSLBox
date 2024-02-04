@@ -20,25 +20,20 @@ private:
     Ui::MainWindow *ui = nullptr;
     QTimer _clock;
 
+    bool _angle_changed = true;
+
 private:
     void init();
 
+private slots:
+    void degree_to_rad(double value);
+
+    void rad_to_degree(double value);
+
 protected:
-    void keyPressEvent(QKeyEvent *event);
+
 
     void closeEvent(QCloseEvent *event);
-
-    void dragEnterEvent(QDragEnterEvent *event);
-
-    void dropEvent(QDropEvent *event);
-
-private slots:
-
-    void load_settings();
-
-    void save_settings();
-
-    void to_main_page();
 
 
 public:
