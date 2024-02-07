@@ -29,8 +29,9 @@ qt_add_executable(ZSLBox
     src/main.cpp
     ${_UI_HEADS}
 
-    ${_BASE_SOURCES}
     ${_UI_SOURCES}
+    ${_MATH_SOURCES}
+    ${_FILE_SOURCES}
 )
 
 target_link_libraries(ZSLBox PRIVATE Qt6::Widgets Qt6::Gui Qt6::Core)
