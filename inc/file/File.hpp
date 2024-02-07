@@ -6,6 +6,13 @@
 
 namespace FileTool
 {
+    static const QString file_filter("All: (*);;"
+        "Video: (*mp4 *mov *avi *flv *mkv *wmv);;"
+        "Audio: (*mp3 *m4a *aac *flac *wma *wav *ape *ogg);;"
+        "Picture: (*png *jpg *bmp *tif *svg *raw);;"
+        "PDF: (*pdf);;Doc: (*doc *docx);;PPT: (*ppt *pptx);;Excel: (*xls *xlsx);;"
+        "Txt: (*txt)");
+
     enum UpperOrLower {Keep, Upper, Lower};
     enum OrderPlace {Back, Front};
 

@@ -66,7 +66,7 @@ void MainWindow::rad_to_degree(double value)
 
 void MainWindow::open_files()
 {
-    _files = QFileDialog::getOpenFileNames(this);
+    _files = QFileDialog::getOpenFileNames(this, QString(), QString(), FileTool::file_filter);
     if (_files.isEmpty())
     {
         _file_model.setStringList(_files);
