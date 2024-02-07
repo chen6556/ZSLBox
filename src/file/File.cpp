@@ -31,6 +31,12 @@ namespace FileTool
                 default:
                     break;
                 }
+
+                if (rule.remove_index0 > -1 && rule.remove_index1 >= rule.remove_index0
+                    && rule.remove_index1 < name.length())
+                {
+                    name.remove(rule.remove_index0, rule.remove_index1 - rule.remove_index0 + 1);
+                }
             }
             else
             {
@@ -61,8 +67,26 @@ namespace FileTool
                 name.remove(QRegularExpression('(' + rule.remove_from + ")[^("
                     + rule.remove_to + ")]*(" + rule.remove_to + ')'));
             }
-            
+
             name.replace(rule.replace_src, rule.replace_dst);
+
+            if (rule.remove_num)
+            {
+                name.remove(QRegularExpression("\\d+"));
+            }
+            else if (rule.fix_order)
+            {
+                int i = name.indexOf(QRegularExpression("\\d+"));
+                if (i >= 0)
+                {
+                    int length = name.length(), j = i;
+                    while (++j < length && name[j].isNumber());
+                    if (j - i < order_len)
+                    {
+                        name.insert(i, QString(order_len - j + i, '0'));
+                    }
+                }
+            }
 
             if (rule.add_order)
             {
@@ -96,7 +120,7 @@ namespace FileTool
                 }
                 order += step;
             }
-        
+
             QFile::rename(file, info.path() + '/' + name + '.' + info.suffix());
             file = info.path() + '/' + name + '.' + info.suffix();
         }

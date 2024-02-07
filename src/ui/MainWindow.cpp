@@ -120,9 +120,13 @@ void MainWindow::rename_files()
     rule.suffix = ui->file_suffix->text();
     rule.remove_from = ui->file_remove_from->text();
     rule.remove_to = ui->file_remove_to->text();
+    rule.remove_index0 = ui->file_remove_index0->value();
+    rule.remove_index1 = ui->file_remove_index1->value();
     rule.replace_src = ui->file_name_replace_src->text();
     rule.replace_dst = ui->file_name_replace_dst->text();
     rule.no_space = ui->file_remove_space->isChecked();
+    rule.remove_num = ui->file_remove_num->isChecked();
+    rule.fix_order = ui->file_fix_order->isChecked();
     rule.add_order = ui->file_add_order->isChecked();
     rule.fix_order_length = ui->file_fix_order_len->isChecked();
     switch (ui->file_order_place->currentIndex())
@@ -170,9 +174,13 @@ void MainWindow::reset()
     ui->file_suffix->clear();
     ui->file_remove_from->clear();
     ui->file_remove_to->clear();
+    ui->file_remove_index0->setValue(-1);
+    ui->file_remove_index1->setValue(-1);
     ui->file_name_replace_src->clear();
     ui->file_name_replace_dst->clear();
     ui->file_remove_space->setChecked(false);
+    ui->file_remove_num->setChecked(false);
+    ui->file_fix_order->setChecked(false);
 
     ui->file_add_order->setChecked(false);
     ui->file_fix_order_len->setChecked(true);

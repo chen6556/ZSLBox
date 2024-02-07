@@ -25,9 +25,14 @@ namespace FileTool
         QString suffix;
         QString remove_from;
         QString remove_to;
+        int remove_index0 = -1;
+        int remove_index1 = -1;
         QString replace_src;
         QString replace_dst;
         bool no_space = false;
+        bool remove_num = false;
+        bool fix_order = false;
+
         bool add_order = false;
         bool fix_order_length = true;
         OrderPlace order_place = OrderPlace::Back;
