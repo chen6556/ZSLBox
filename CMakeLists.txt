@@ -20,6 +20,9 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/output/)
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets Gui Core)
 
+include_directories(${FFmpeg_INCLUDE_DIR})
+link_directories(${FFmpeg_LIB_DIR})
+
 add_subdirectory(src)
 include_directories(inc)
 file(GLOB _UI_HEADS inc/ui/*hpp)
@@ -34,7 +37,8 @@ qt_add_executable(ZSLBox
     ${_FILE_SOURCES}
 )
 
-target_link_libraries(ZSLBox PRIVATE Qt6::Widgets Qt6::Gui Qt6::Core)
+target_link_libraries(ZSLBox PRIVATE Qt6::Widgets Qt6::Gui Qt6::Core
+    avcodec avdevice avfilter avformat avutil postproc swresample swscale)
 
 set_target_properties(ZSLBox PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
